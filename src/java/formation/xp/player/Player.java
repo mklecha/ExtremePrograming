@@ -75,5 +75,10 @@ public abstract class Player {
         this.turnBet = 0;
     }
 
+    public boolean isBroke() {
+        return money <= 0;
+    }
+
     public abstract void seeCards();
+    
 }

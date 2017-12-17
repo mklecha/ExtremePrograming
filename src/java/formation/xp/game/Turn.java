@@ -12,6 +12,7 @@ public class Turn {
 
     public Turn(List<Player> players) {
         this.players = players;
+        players.removeIf(Player::isBroke);
         players.forEach(Player::resetTurnBet);
     }
 

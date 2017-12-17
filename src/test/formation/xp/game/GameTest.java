@@ -21,12 +21,11 @@ public class GameTest extends TestCase {
     public void testPlayersHaveCards() {
         Game g = new Game();
 
-        g.addPlayer(new AIPlayer("p1"));
-        g.addPlayer(new AIPlayer("p2"));
-        g.addPlayer(new AIPlayer("p3"));
-        g.addPlayer(new AIPlayer("p4"));
-        g.addPlayer(new AIPlayer("p5"));
-        g.addPlayer(new AIPlayer("p6"));
+        for (int i = 0; i < 6; i++) {
+            Player player = new AIPlayer("");
+            player.setMoney(100);
+            g.addPlayer(player);
+        }
 
         g.run();
 
