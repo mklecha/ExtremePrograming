@@ -1,6 +1,8 @@
 package formation.xp.player;
 
 import formation.xp.cards.Card;
+import formation.xp.exceptions.NotEnoughMoneyException;
+import formation.xp.game.Turn;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,6 +10,8 @@ import java.util.List;
 public class Player {
     private String name;
     private List<Card> cards;
+
+    private int money;
 
     public Player(String name) {
         this.cards = new LinkedList<>();
@@ -22,6 +26,14 @@ public class Player {
     public List<Card> getCards() {
         return cards;
     }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getMoney() {
+        return money;
+    }
     //endregion
 
     public void addCard(Card card) {
@@ -29,4 +41,11 @@ public class Player {
     }
 
 
+    public void bet(Turn turn, int bet) {
+        if (bet > money) {
+            throw new NotEnoughMoneyException();
+        }
+        this.money -= bet;
+        turn.addMoney(bet);
+    }
 }
