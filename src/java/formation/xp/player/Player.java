@@ -52,4 +52,8 @@ public class Player {
     public void call(Turn turn) {
         bet(turn, turn.getMaxStake());
     }
+
+    public void allIn(Turn turn) {
+        bet(turn, money);
+    }
 }

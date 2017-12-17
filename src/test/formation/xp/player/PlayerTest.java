@@ -59,4 +59,14 @@ public class PlayerTest extends TestCase {
 
         assertEquals(60, player.getMoney());
     }
+
+    public void testAllIn(){
+        Player player = new Player("");
+        player.setMoney(100);
+        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+
+        player.allIn(turn);
+
+        assertEquals(0, player.getMoney());
+    }
 }
