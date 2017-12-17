@@ -46,25 +46,25 @@ public abstract class Player {
         cards.add(card);
     }
 
-    void bet(Turn turn, int bet) {
+    private void bet(Turn turn, int bet) {
         if (bet > money) {
             throw new NotEnoughMoneyException();
         }
         this.money -= bet;
-        turn.placeBet(bet);
         this.turnBet += bet;
+        turn.placeBet(bet, turnBet);
     }
 
     public void call(Turn turn) {
-        bet(turn, turn.getMaxStake());
+        bet(turn, turn.getMaxStake() - turnBet);
     }
 
     public void allIn(Turn turn) {
         bet(turn, money);
     }
 
-    public void raise(Turn turn, int money) {
-        bet(turn, turn.getMaxStake() + money);
+    public void callAndRaise(Turn turn, int money) {
+        bet(turn, turn.getMaxStake() + money - turnBet);
     }
 
     public void pass(Turn turn) {
@@ -79,9 +79,20 @@ public abstract class Player {
         return money <= 0;
     }
 
+    public void win(int money) {
+        this.money += money;
+    }
+
     public abstract void seeCards();
 
     public abstract void seeMyMoney();
 
     public abstract void seeCommonCards(List<Card> commonCards);
+
+    public abstract void seeMyActualBet();
+
+    public abstract void seeMaxBet(Turn turn);
+
+    public abstract void takeAction(Turn turn);
+
 }

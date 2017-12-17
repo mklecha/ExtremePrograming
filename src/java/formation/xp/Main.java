@@ -14,6 +14,7 @@ public class Main {
 
     static void addPlayers(Game game) {
         game.addPlayer(new HumanPlayer("P1"));
+//        game.addPlayer(new HumanPlayer("P2"));
         game.addPlayer(new AIPlayer("AI - 1"));
         game.addPlayer(new AIPlayer("AI - 2"));
 

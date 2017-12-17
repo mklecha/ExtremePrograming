@@ -27,7 +27,8 @@ public class GameTest extends TestCase {
             g.addPlayer(player);
         }
 
-        g.run();
+        g.getDeck().shuffle();
+        g.giveCards();
 
         g.getPlayers().forEach(p -> assertEquals(2, p.getCards().size()));
 
@@ -42,22 +43,24 @@ public class GameTest extends TestCase {
         AIPlayer p = new AIPlayer("");
         p.setMoney(100);
 
+        g.addPlayer(p);
+
         Turn t1 = new Turn(g.getPlayers());
-        p.raise(t1, 20);
+        p.callAndRaise(t1, 20);
 
         assertEquals(20, t1.getMoneyInStake());
         assertEquals(80, p.getMoney());
 
-        g.runTurn(t1);
+        g.setMoney(g.getMoney() + t1.getMoneyInStake());
 
         Turn t2 = new Turn(g.getPlayers());
 
-        p.raise(t2, 20);
+        p.callAndRaise(t2, 20);
 
         assertEquals(20, t2.getMoneyInStake());
         assertEquals(60, p.getMoney());
 
-        g.runTurn(t2);
+        g.setMoney(g.getMoney() + t1.getMoneyInStake());
 
         assertEquals(40, g.getMoney());
     }

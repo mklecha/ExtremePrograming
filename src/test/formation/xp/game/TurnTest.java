@@ -24,20 +24,24 @@ public class TurnTest extends TestCase {
 
         assertEquals(0, turn.getMaxStake());
 
-        player.raise(turn, 20);
+        player.callAndRaise(turn, 20);
         assertEquals(20, turn.getMaxStake());
 
         player.call(turn);
         assertEquals(20, turn.getMaxStake());
 
-        player.raise(turn, 30);
+        Player p2 = new AIPlayer("");
+        p2.setMoney(100);
+
+
+        p2.callAndRaise(turn, 30);
         assertEquals(50, turn.getMaxStake());
     }
 
     public void testTurnBets() {
         createTurn();
 
-        player.raise(turn, 10);
+        player.callAndRaise(turn, 10);
 
         assertEquals(10, player.getTurnBet());
         assertEquals(90, player.getMoney());

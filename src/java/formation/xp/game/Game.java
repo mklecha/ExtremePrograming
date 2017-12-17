@@ -27,6 +27,10 @@ public class Game {
         return players;
     }
 
+    void setMoney(int money) {
+        this.money = money;
+    }
+
     public int getMoney() {
         return money;
     }
@@ -34,9 +38,14 @@ public class Game {
     List<Card> getCommonCards() {
         return commonCards;
     }
+
+    Deck getDeck() {
+        return deck;
+    }
+
     //endregion
 
-    private void giveCards() {
+    public void giveCards() {
         for (int i = 0; i < 2; i++) {
             players.forEach(p -> p.addCard(deck.getCard()));
         }
@@ -50,14 +59,27 @@ public class Game {
         this.deck.shuffle();
         this.giveCards();
 
-        runTurn(new Turn(players));
+        Turn turn = new Turn(players);
+        runTurn(turn);
 
         addCommonCard(3);
 
+        turn = new Turn(players);
+        if (turn.getWinner() != null) {
+            getPrice(turn.getWinner());
+            return;
+        }
+        runTurn(turn);
+
+    }
+
+    private void getPrice(Player winner) {
+        winner.win(this.money);
+        this.money = 0;
     }
 
     void runTurn(Turn turn) {
-        turn.run(commonCards);
+        turn.run(turn, commonCards);
         money += turn.getMoneyInStake();
 
     }
