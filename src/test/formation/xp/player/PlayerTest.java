@@ -60,7 +60,7 @@ public class PlayerTest extends TestCase {
         assertEquals(60, player.getMoney());
     }
 
-    public void testAllIn(){
+    public void testAllIn() {
         Player player = new Player("");
         player.setMoney(100);
         Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
@@ -68,5 +68,23 @@ public class PlayerTest extends TestCase {
         player.allIn(turn);
 
         assertEquals(0, player.getMoney());
+    }
+
+    public void testRaise() {
+        Player player = new Player("");
+        player.setMoney(100);
+        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+
+        player.bet(turn, 10);
+        assertEquals(90, player.getMoney());
+
+        player.raise(turn, 10);
+        assertEquals(70, player.getMoney());
+
+        try {
+            player.raise(turn, 60);
+            fail("NotEnoughMoneyException expected");
+        } catch (NotEnoughMoneyException ignored) {
+        }
     }
 }
