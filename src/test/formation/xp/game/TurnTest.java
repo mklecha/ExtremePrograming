@@ -22,13 +22,13 @@ public class TurnTest extends TestCase {
 
         assertEquals(0, turn.getMaxStake());
 
-        player.bet(turn, 20);
+        player.raise(turn, 20);
         assertEquals(20, turn.getMaxStake());
 
-        player.bet(turn, 10);
+        player.call(turn);
         assertEquals(20, turn.getMaxStake());
 
-        player.bet(turn, 50);
+        player.raise(turn, 30);
         assertEquals(50, turn.getMaxStake());
     }
 

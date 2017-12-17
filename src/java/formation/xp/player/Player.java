@@ -46,7 +46,7 @@ public class Player {
         cards.add(card);
     }
 
-    public void bet(Turn turn, int bet) {
+    void bet(Turn turn, int bet) {
         if (bet > money) {
             throw new NotEnoughMoneyException();
         }

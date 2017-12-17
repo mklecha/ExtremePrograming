@@ -1,11 +1,14 @@
 package formation.xp.player;
 
+import formation.xp.cards.Card;
 import formation.xp.exceptions.NotEnoughMoneyException;
+import formation.xp.game.Game;
 import formation.xp.game.Turn;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class PlayerTest extends TestCase {
 
@@ -95,12 +98,22 @@ public class PlayerTest extends TestCase {
         assertFalse(turn.isPlayerPlaying(player));
     }
 
-    public void testMyBet() {
+    public void testTurnBet() {
         createPlayer(100);
         player.bet(turn, 10);
         player.raise(turn, 20);
 
         assertEquals(40, player.getTurnBet());
+    }
 
+    public void testGetMyCards() {
+        createPlayer(100);
+        Game g = new Game();
+        g.addPlayer(player);
+        g.run();
+
+        List<Card> cards = player.getCards();
+        assertEquals(2, cards.size());
+        assertNotSame(cards.get(0), cards.get(1));
     }
 }
