@@ -40,6 +40,9 @@ public class Turn {
     }
 
     public void run() {
-        players.forEach(Player::seeCards);
+        players.forEach(player -> {
+            player.seeCards();
+            player.seeMyMoney();
+        });
     }
 }

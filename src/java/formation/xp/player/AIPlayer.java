@@ -9,4 +9,10 @@ public class AIPlayer extends Player {
     @Override
     public void seeCards() {
     }
+
+    @Override
+    public void seeMyMoney() {
+    }
+
+
 }

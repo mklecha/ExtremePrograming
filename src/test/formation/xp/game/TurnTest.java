@@ -56,4 +56,5 @@ public class TurnTest extends TestCase {
         assertTrue(turn.isPlayerPlaying(p1));
         assertFalse(turn.isPlayerPlaying(p2));
     }
+
 }

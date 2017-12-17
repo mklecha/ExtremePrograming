@@ -80,5 +80,6 @@ public abstract class Player {
     }
 
     public abstract void seeCards();
-    
+
+    public abstract void seeMyMoney();
 }

@@ -43,6 +43,11 @@ public class PlayerTest extends TestCase {
         assertEquals(70, turn.getMoneyInStake());
     }
 
+    public void testMoney() {
+        createPlayer(100);
+        assertEquals(100, player.getMoney());
+    }
+
     public void testTooMuchBet() {
         createPlayer(100);
 
