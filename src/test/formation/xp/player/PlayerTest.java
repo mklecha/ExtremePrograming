@@ -87,4 +87,15 @@ public class PlayerTest extends TestCase {
         } catch (NotEnoughMoneyException ignored) {
         }
     }
+
+    public void testPass() {
+        Player player = new Player("");
+        player.setMoney(100);
+        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+
+        player.pass(turn);
+
+        assertEquals(100, player.getMoney());
+        assertFalse(turn.isPlayerPlaying(player));
+    }
 }

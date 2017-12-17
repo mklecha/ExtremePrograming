@@ -38,6 +38,14 @@ public class Turn {
         moneyInStake += money;
     }
 
+    public boolean isPlayerPlaying(Player player) {
+        return players.contains(player);
+    }
+
+    public void removePlayer(Player player) {
+        players.remove(player);
+    }
+
     public void start() {
         this.giveCards();
     }

@@ -32,7 +32,7 @@ Id | En tant que... | Je veux... | Afin de... | Valeur | O(n) (h)
 9 | Joueur | suivre (miser le minimum pour continuer) | augmenter la somme en jeu | 80 | 1/2
 10 | Joueur | faire tapis (miser tout mon argent) | augmenter la somme en jeu | 80 | 1/2
 11 | Joueur | relancer (surenchérir) | augmenter la somme en jeu | 80 | 1/2
-12 | Joueur | passer | voir les autres mises | 80 | 1/2
+12 | Joueur | passer | arreter de jouer dans ce tour | 80 | 1/2
 13 | Joueur | voir ma mise actuelle | décider de mon annonce | 80 | 1/2
 14 | Joueur | jouer après le joueur à ma droite | effectuer une action | 70 | 1
 15 | Joueur | voir seulement mes cartes | décider de mon annonce | 100 | 1

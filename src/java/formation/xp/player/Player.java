@@ -60,4 +60,8 @@ public class Player {
     public void raise(Turn turn, int money) {
         bet(turn, turn.getMaxStake() + money);
     }
+
+    public void pass(Turn turn) {
+        turn.removePlayer(this);
+    }
 }
