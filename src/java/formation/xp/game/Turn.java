@@ -10,6 +10,7 @@ public class Turn {
     private Deck deck;
     private List<Player> players;
     private int moneyInStake;
+    private int maxStake;
 
     public Turn(Deck deck, List<Player> players) {
         this.deck = deck;
@@ -20,6 +21,10 @@ public class Turn {
     public int getMoneyInStake() {
         return moneyInStake;
     }
+
+    public int getMaxStake() {
+        return maxStake;
+    }
     //endregion
 
     private void giveCards() {
@@ -28,7 +33,8 @@ public class Turn {
         }
     }
 
-    public void addMoney(int money) {
+    public void placeBet(int money) {
+        maxStake = Math.max(maxStake, money);
         moneyInStake += money;
     }
 

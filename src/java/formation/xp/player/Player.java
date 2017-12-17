@@ -46,6 +46,10 @@ public class Player {
             throw new NotEnoughMoneyException();
         }
         this.money -= bet;
-        turn.addMoney(bet);
+        turn.placeBet(bet);
+    }
+
+    public void call(Turn turn) {
+        bet(turn, turn.getMaxStake());
     }
 }
