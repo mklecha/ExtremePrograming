@@ -36,4 +36,30 @@ public class GameTest extends TestCase {
 
         assertEquals(12, cards.size());
     }
+
+    public void testMoneyAfterTurn() {
+        Game g = new Game();
+        AIPlayer p = new AIPlayer("");
+        p.setMoney(100);
+
+        Turn t1 = new Turn(g.getPlayers());
+        p.raise(t1, 20);
+
+        assertEquals(20, t1.getMoneyInStake());
+        assertEquals(80, p.getMoney());
+
+        g.runTurn(t1);
+
+        Turn t2 = new Turn(g.getPlayers());
+
+        p.raise(t2, 20);
+
+        assertEquals(20, t2.getMoneyInStake());
+        assertEquals(60, p.getMoney());
+
+        g.runTurn(t2);
+
+        assertEquals(40, g.getMoney());
+
+    }
 }

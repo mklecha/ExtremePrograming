@@ -11,6 +11,8 @@ public class Game {
     private Deck deck;
     private List<Player> players;
 
+    private int money;
+
     public Game() {
         players = new ArrayList<>();
         this.deck = new Deck();
@@ -19,6 +21,10 @@ public class Game {
     //region setters getters
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public int getMoney() {
+        return money;
     }
     //endregion
 
@@ -36,8 +42,13 @@ public class Game {
         this.deck.shuffle();
         this.giveCards();
 
-        Turn t1 = new Turn(players);
-        t1.run();
+        runTurn(new Turn(players));
+
+    }
+
+    void runTurn(Turn turn) {
+        turn.run();
+        money += turn.getMoneyInStake();
 
     }
 }
