@@ -37,4 +37,8 @@ public class Turn {
     public void removePlayer(Player player) {
         players.remove(player);
     }
+
+    public void run() {
+        players.forEach(Player::seeCards);
+    }
 }

@@ -5,10 +5,10 @@ import junit.framework.TestCase;
 public class CardColorTest extends TestCase {
 
     public void testValues() {
-        assertEquals('C', CardColor.CLUB.getValue());
-        assertEquals('D', CardColor.DIAMOND.getValue());
-        assertEquals('S', CardColor.SPADE.getValue());
-        assertEquals('H', CardColor.HEART.getValue());
+        assertEquals('♧', CardColor.CLUB.getValue());
+        assertEquals('♢', CardColor.DIAMOND.getValue());
+        assertEquals('♤', CardColor.SPADE.getValue());
+        assertEquals('♡', CardColor.HEART.getValue());
 
         CardColor color = CardColor.HEART;
 

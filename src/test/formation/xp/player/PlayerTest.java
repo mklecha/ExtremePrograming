@@ -16,14 +16,14 @@ public class PlayerTest extends TestCase {
     private Turn turn;
 
     private void createPlayer(int money) {
-        player = new Player("");
+        player = new AIPlayer("");
         player.setMoney(money);
         turn = new Turn(new ArrayList<>(Collections.singletonList(player)));
     }
 
     public void testConstructor() {
         String testName = "test";
-        Player p = new Player(testName);
+        Player p = new AIPlayer(testName);
 
         assertEquals(testName, p.getName());
         assertTrue(p.getCards().isEmpty());

@@ -1,6 +1,7 @@
 package formation.xp.game;
 
 import formation.xp.cards.Card;
+import formation.xp.player.AIPlayer;
 import formation.xp.player.Player;
 import junit.framework.TestCase;
 
@@ -11,7 +12,7 @@ public class GameTest extends TestCase {
     public void testAddingPlayer() {
         Game g = new Game();
 
-        Player p = new Player("");
+        Player p = new AIPlayer("");
         g.addPlayer(p);
 
         assertTrue(g.getPlayers().contains(p));
@@ -20,12 +21,12 @@ public class GameTest extends TestCase {
     public void testPlayersHaveCards() {
         Game g = new Game();
 
-        g.addPlayer(new Player("p1"));
-        g.addPlayer(new Player("p2"));
-        g.addPlayer(new Player("p3"));
-        g.addPlayer(new Player("p4"));
-        g.addPlayer(new Player("p5"));
-        g.addPlayer(new Player("p6"));
+        g.addPlayer(new AIPlayer("p1"));
+        g.addPlayer(new AIPlayer("p2"));
+        g.addPlayer(new AIPlayer("p3"));
+        g.addPlayer(new AIPlayer("p4"));
+        g.addPlayer(new AIPlayer("p5"));
+        g.addPlayer(new AIPlayer("p6"));
 
         g.run();
 

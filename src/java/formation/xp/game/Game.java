@@ -33,10 +33,11 @@ public class Game {
     }
 
     public void run() {
-        System.out.println("Game started");
+        this.deck.shuffle();
         this.giveCards();
 
         Turn t1 = new Turn(players);
+        t1.run();
 
     }
 }

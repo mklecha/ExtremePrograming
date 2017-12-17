@@ -59,16 +59,16 @@ public class Card {
         } else {
             switch (cardNumber) {
                 case 1:
-                    result += " A";
+                    result += 'A';
                     break;
                 case 11:
-                    result += " J";
+                    result += 'J';
                     break;
                 case 12:
-                    result += " Q";
+                    result += 'Q';
                     break;
                 case 13:
-                    result += " K";
+                    result += 'K';
                     break;
             }
         }

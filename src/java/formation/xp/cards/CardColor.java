@@ -1,7 +1,7 @@
 package formation.xp.cards;
 
 public enum CardColor {
-    DIAMOND('D'), HEART('H'), SPADE('S'), CLUB('C');
+    DIAMOND('♢'), HEART('♡'), SPADE('♤'), CLUB('♧');
 
     private final char c;
 

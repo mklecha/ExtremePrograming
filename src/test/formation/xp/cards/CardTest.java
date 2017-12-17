@@ -79,40 +79,40 @@ public class CardTest extends TestCase {
 
     public void testStringValue() {
         Card c = new Card(2, CardColor.HEART);
-        assertEquals("H2", c.getStringValue());
+        assertEquals("♡2", c.getStringValue());
 
         c = new Card(2, CardColor.DIAMOND);
-        assertEquals("D2", c.getStringValue());
+        assertEquals("♢2", c.getStringValue());
 
         c = new Card(2, CardColor.SPADE);
-        assertEquals("S2", c.getStringValue());
+        assertEquals("♤2", c.getStringValue());
 
         c = new Card(2, CardColor.CLUB);
-        assertEquals("C2", c.getStringValue());
+        assertEquals("♧2", c.getStringValue());
 
         c = new Card(7, CardColor.HEART);
-        assertEquals("H7", c.getStringValue());
+        assertEquals("♡7", c.getStringValue());
 
         c = new Card(8, CardColor.DIAMOND);
-        assertEquals("D8", c.getStringValue());
+        assertEquals("♢8", c.getStringValue());
 
         c = new Card(9, CardColor.SPADE);
-        assertEquals("S9", c.getStringValue());
+        assertEquals("♤9", c.getStringValue());
 
         c = new Card(10, CardColor.CLUB);
-        assertEquals("C10", c.getStringValue());
+        assertEquals("♧10", c.getStringValue());
 
         c = new Card(1, CardColor.HEART);
-        assertEquals("H A", c.getStringValue());
+        assertEquals("♡A", c.getStringValue());
 
         c = new Card(11, CardColor.DIAMOND);
-        assertEquals("D J", c.getStringValue());
+        assertEquals("♢J", c.getStringValue());
 
         c = new Card(12, CardColor.SPADE);
-        assertEquals("S Q", c.getStringValue());
+        assertEquals("♤Q", c.getStringValue());
 
         c = new Card(13, CardColor.CLUB);
-        assertEquals("C K", c.getStringValue());
+        assertEquals("♧K", c.getStringValue());
     }
 
 }

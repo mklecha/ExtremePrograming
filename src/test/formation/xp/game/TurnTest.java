@@ -1,5 +1,6 @@
 package formation.xp.game;
 
+import formation.xp.player.AIPlayer;
 import formation.xp.player.Player;
 import junit.framework.TestCase;
 
@@ -12,7 +13,7 @@ public class TurnTest extends TestCase {
     private Turn turn;
 
     private void createTurn() {
-        player = new Player("");
+        player = new AIPlayer("");
         player.setMoney(100);
         turn = new Turn(new ArrayList<>(Collections.singletonList(player)));
     }
@@ -43,4 +44,5 @@ public class TurnTest extends TestCase {
         new Turn(new ArrayList<>(Collections.singletonList(player)));
         assertEquals(0, player.getTurnBet());
     }
+
 }

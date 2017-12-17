@@ -7,7 +7,7 @@ import formation.xp.game.Turn;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Player {
+public abstract class Player {
     private String name;
     private List<Card> cards;
 
@@ -74,4 +74,6 @@ public class Player {
     public void resetTurnBet() {
         this.turnBet = 0;
     }
+
+    public abstract void seeCards();
 }

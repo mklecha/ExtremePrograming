@@ -1,7 +1,8 @@
 package formation.xp;
 
 import formation.xp.game.Game;
-import formation.xp.player.Player;
+import formation.xp.player.AIPlayer;
+import formation.xp.player.HumanPlayer;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +13,8 @@ public class Main {
     }
 
     static void addPlayers(Game game) {
-        game.addPlayer(new Player("p1"));
-        game.addPlayer(new Player("p2"));
+        game.addPlayer(new HumanPlayer("P1"));
+        game.addPlayer(new AIPlayer("AI - 1"));
+        game.addPlayer(new AIPlayer("AI - 2"));
     }
 }
