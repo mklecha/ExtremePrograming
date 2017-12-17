@@ -1,6 +1,5 @@
 package formation.xp.game;
 
-import formation.xp.cards.Deck;
 import formation.xp.player.Player;
 import junit.framework.TestCase;
 
@@ -9,10 +8,17 @@ import java.util.Collections;
 
 public class TurnTest extends TestCase {
 
-    public void testMaxStake() {
-        Player player = new Player("");
+    private Player player;
+    private Turn turn;
+
+    private void createTurn() {
+        player = new Player("");
         player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        turn = new Turn(new ArrayList<>(Collections.singletonList(player)));
+    }
+
+    public void testMaxStake() {
+        createTurn();
 
         assertEquals(0, turn.getMaxStake());
 
@@ -24,5 +30,17 @@ public class TurnTest extends TestCase {
 
         player.bet(turn, 50);
         assertEquals(50, turn.getMaxStake());
+    }
+
+    public void testTurnBets() {
+        createTurn();
+
+        player.raise(turn, 10);
+
+        assertEquals(10, player.getTurnBet());
+        assertEquals(90, player.getMoney());
+
+        new Turn(new ArrayList<>(Collections.singletonList(player)));
+        assertEquals(0, player.getTurnBet());
     }
 }

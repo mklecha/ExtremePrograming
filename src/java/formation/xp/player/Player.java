@@ -12,10 +12,12 @@ public class Player {
     private List<Card> cards;
 
     private int money;
+    private int turnBet;
 
     public Player(String name) {
         this.cards = new LinkedList<>();
         this.name = name;
+        this.turnBet = 0;
     }
 
     //region setters getters
@@ -34,12 +36,15 @@ public class Player {
     public int getMoney() {
         return money;
     }
+
+    public int getTurnBet() {
+        return turnBet;
+    }
     //endregion
 
     public void addCard(Card card) {
         cards.add(card);
     }
-
 
     public void bet(Turn turn, int bet) {
         if (bet > money) {
@@ -47,6 +52,7 @@ public class Player {
         }
         this.money -= bet;
         turn.placeBet(bet);
+        this.turnBet += bet;
     }
 
     public void call(Turn turn) {
@@ -63,5 +69,9 @@ public class Player {
 
     public void pass(Turn turn) {
         turn.removePlayer(this);
+    }
+
+    public void resetTurnBet() {
+        this.turnBet = 0;
     }
 }

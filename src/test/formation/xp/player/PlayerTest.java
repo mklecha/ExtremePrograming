@@ -1,6 +1,5 @@
 package formation.xp.player;
 
-import formation.xp.cards.Deck;
 import formation.xp.exceptions.NotEnoughMoneyException;
 import formation.xp.game.Turn;
 import junit.framework.TestCase;
@@ -9,6 +8,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class PlayerTest extends TestCase {
+
+    private Player player;
+    private Turn turn;
+
+    private void createPlayer(int money) {
+        player = new Player("");
+        player.setMoney(money);
+        turn = new Turn(new ArrayList<>(Collections.singletonList(player)));
+    }
 
     public void testConstructor() {
         String testName = "test";
@@ -19,9 +27,7 @@ public class PlayerTest extends TestCase {
     }
 
     public void testBet() {
-        Player player = new Player("");
-        player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        createPlayer(100);
 
         player.bet(turn, 50);
 
@@ -35,9 +41,7 @@ public class PlayerTest extends TestCase {
     }
 
     public void testTooMuchBet() {
-        Player player = new Player("");
-        player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        createPlayer(100);
 
         try {
             player.bet(turn, 150);
@@ -47,9 +51,7 @@ public class PlayerTest extends TestCase {
     }
 
     public void testCall() {
-        Player player = new Player("");
-        player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        createPlayer(100);
 
         player.call(turn);
         assertEquals(100, player.getMoney());
@@ -61,9 +63,7 @@ public class PlayerTest extends TestCase {
     }
 
     public void testAllIn() {
-        Player player = new Player("");
-        player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        createPlayer(100);
 
         player.allIn(turn);
 
@@ -71,9 +71,7 @@ public class PlayerTest extends TestCase {
     }
 
     public void testRaise() {
-        Player player = new Player("");
-        player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        createPlayer(100);
 
         player.bet(turn, 10);
         assertEquals(90, player.getMoney());
@@ -89,13 +87,20 @@ public class PlayerTest extends TestCase {
     }
 
     public void testPass() {
-        Player player = new Player("");
-        player.setMoney(100);
-        Turn turn = new Turn(new Deck(), new ArrayList<>(Collections.singletonList(player)));
+        createPlayer(100);
 
         player.pass(turn);
 
         assertEquals(100, player.getMoney());
         assertFalse(turn.isPlayerPlaying(player));
+    }
+
+    public void testMyBet() {
+        createPlayer(100);
+        player.bet(turn, 10);
+        player.raise(turn, 20);
+
+        assertEquals(40, player.getTurnBet());
+
     }
 }

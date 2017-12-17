@@ -16,12 +16,17 @@ public class Game {
         this.deck = new Deck();
     }
 
-
     //region setters getters
     public List<Player> getPlayers() {
         return players;
     }
     //endregion
+
+    private void giveCards() {
+        for (int i = 0; i < 2; i++) {
+            players.forEach(p -> p.addCard(deck.getCard()));
+        }
+    }
 
     public void addPlayer(Player player) {
         players.add(player);
@@ -29,10 +34,9 @@ public class Game {
 
     public void run() {
         System.out.println("Game started");
-        Turn t1 = new Turn(deck, players);
+        this.giveCards();
 
-        t1.start();
-
+        Turn t1 = new Turn(players);
 
     }
 }
