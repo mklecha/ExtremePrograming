@@ -1,7 +1,6 @@
 package formation.xp;
 
 import formation.xp.game.Game;
-import org.junit.Test;
 
 import junit.framework.TestCase;
 
