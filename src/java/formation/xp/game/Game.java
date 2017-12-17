@@ -1,6 +1,8 @@
 package formation.xp.game;
 
+import formation.xp.cards.Card;
 import formation.xp.cards.Deck;
+import formation.xp.exceptions.WrongCardAmountToShowException;
 import formation.xp.player.Player;
 
 import java.util.ArrayList;
@@ -10,11 +12,13 @@ public class Game {
 
     private Deck deck;
     private List<Player> players;
+    private List<Card> commonCards;
 
     private int money;
 
     public Game() {
         players = new ArrayList<>();
+        commonCards = new ArrayList<>();
         this.deck = new Deck();
     }
 
@@ -25,6 +29,10 @@ public class Game {
 
     public int getMoney() {
         return money;
+    }
+
+    List<Card> getCommonCards() {
+        return commonCards;
     }
     //endregion
 
@@ -44,11 +52,22 @@ public class Game {
 
         runTurn(new Turn(players));
 
+        addCommonCard(3);
+
     }
 
     void runTurn(Turn turn) {
-        turn.run();
+        turn.run(commonCards);
         money += turn.getMoneyInStake();
 
+    }
+
+    void addCommonCard(int cardAmount) {
+        if (cardAmount != 3 && cardAmount != 1) {
+            throw new WrongCardAmountToShowException();
+        }
+        for (int i = 0; i < cardAmount; i++) {
+            commonCards.add(deck.getCard());
+        }
     }
 }

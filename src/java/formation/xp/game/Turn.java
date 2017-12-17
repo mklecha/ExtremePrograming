@@ -1,5 +1,6 @@
 package formation.xp.game;
 
+import formation.xp.cards.Card;
 import formation.xp.player.Player;
 
 import java.util.List;
@@ -39,8 +40,9 @@ public class Turn {
         players.remove(player);
     }
 
-    public void run() {
+    public void run(List<Card> commonCards) {
         players.forEach(player -> {
+            player.seeCommonCards(commonCards);
             player.seeCards();
             player.seeMyMoney();
         });

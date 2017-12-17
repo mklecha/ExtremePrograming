@@ -82,4 +82,6 @@ public abstract class Player {
     public abstract void seeCards();
 
     public abstract void seeMyMoney();
+
+    public abstract void seeCommonCards(List<Card> commonCards);
 }

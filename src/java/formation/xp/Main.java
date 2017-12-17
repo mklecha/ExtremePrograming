@@ -16,5 +16,7 @@ public class Main {
         game.addPlayer(new HumanPlayer("P1"));
         game.addPlayer(new AIPlayer("AI - 1"));
         game.addPlayer(new AIPlayer("AI - 2"));
+
+        game.getPlayers().forEach(p -> p.setMoney(1000));
     }
 }

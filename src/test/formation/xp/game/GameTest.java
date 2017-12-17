@@ -60,6 +60,12 @@ public class GameTest extends TestCase {
         g.runTurn(t2);
 
         assertEquals(40, g.getMoney());
+    }
 
+    public void testGetCommonCards() {
+        Game g = new Game();
+        g.addCommonCard(3);
+
+        assertEquals(3, g.getCommonCards().size());
     }
 }
