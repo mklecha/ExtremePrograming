@@ -7,6 +7,7 @@ import formation.xp.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
 
@@ -55,24 +56,6 @@ public class Game {
         players.add(player);
     }
 
-    public void run() {
-        this.deck.shuffle();
-        this.giveCards();
-
-        Turn turn = new Turn(players);
-        runTurn(turn);
-
-        addCommonCard(3);
-
-        turn = new Turn(players);
-        if (turn.getWinner() != null) {
-            getPrice(turn.getWinner());
-            return;
-        }
-        runTurn(turn);
-
-    }
-
     private void getPrice(Player winner) {
         winner.win(this.money);
         this.money = 0;
@@ -85,11 +68,35 @@ public class Game {
     }
 
     void addCommonCard(int cardAmount) {
-        if (cardAmount != 3 && cardAmount != 1) {
+        if (cardAmount != 5 && cardAmount != 1) {
             throw new WrongCardAmountToShowException();
         }
         for (int i = 0; i < cardAmount; i++) {
             commonCards.add(deck.getCard());
         }
     }
+
+    public void run() {
+        this.deck.shuffle();
+        this.giveCards();
+
+        Turn turn = new Turn(players);
+        runTurn(turn);
+
+        addCommonCard(5);
+
+        turn = new Turn(players);
+        if (turn.getWinner() != null) {
+            getPrice(turn.getWinner());
+            return;
+        }
+        runTurn(turn);
+
+        HandsEvaluator handsEvaluator = new HandsEvaluator(players.stream().filter(p -> !p.isBroke()).collect(Collectors.toSet()));
+        handsEvaluator.addCommonCards(commonCards);
+        handsEvaluator.evaluate();
+        List<Player> winners = handsEvaluator.getWinners();
+        winners.forEach(this::getPrice);
+    }
+
 }

@@ -4,7 +4,7 @@ import formation.xp.exceptions.WrongCardNumberException;
 
 import java.util.Objects;
 
-public class Card {
+public class Card implements Comparable<Card> {
     private int cardNumber;
     private CardColor cardColor;
 
@@ -36,6 +36,12 @@ public class Card {
         this.cardNumber = cardNumber;
         this.cardColor = cardColor;
     }
+
+    //region getters setters
+    public int getCardNumber() {
+        return cardNumber;
+    }
+    //endregion
 
     @Override
     public boolean equals(Object o) {
@@ -78,5 +84,10 @@ public class Card {
     @Override
     public String toString() {
         return this.getStringValue();
+    }
+
+    @Override
+    public int compareTo(Card o) {
+        return Integer.compare(this.cardNumber, o.cardNumber);
     }
 }
