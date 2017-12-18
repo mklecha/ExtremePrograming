@@ -6,8 +6,9 @@ import formation.xp.exceptions.WrongCardAmountToShowException;
 import formation.xp.player.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Game {
 
@@ -77,6 +78,9 @@ public class Game {
     }
 
     public void run() {
+        List<Player> turnPlayers = new LinkedList<>(players);
+        turnPlayers.removeIf(Player::isBroke);
+
         this.deck.shuffle();
         this.giveCards();
 
@@ -92,7 +96,7 @@ public class Game {
         }
         runTurn(turn);
 
-        HandsEvaluator handsEvaluator = new HandsEvaluator(players.stream().filter(p -> !p.isBroke()).collect(Collectors.toSet()));
+        HandsEvaluator handsEvaluator = new HandsEvaluator(new HashSet<>(turnPlayers));
         handsEvaluator.addCommonCards(commonCards);
         handsEvaluator.evaluate();
         List<Player> winners = handsEvaluator.getWinners();

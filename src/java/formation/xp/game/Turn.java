@@ -62,7 +62,7 @@ public class Turn {
         }
         while (!allPlayersHaveSameBet(players));
 
-        System.out.println("END BETTING TOURN\n\n");
+        System.out.println("END BETTING TURN\n\n");
     }
 
     private boolean allPlayersHaveSameBet(List<Player> list) {

@@ -2,6 +2,7 @@ package formation.xp.player;
 
 import formation.xp.cards.Card;
 import formation.xp.exceptions.NotEnoughMoneyException;
+import formation.xp.exceptions.TooSmallBetExpcetion;
 import formation.xp.game.Turn;
 
 import java.util.LinkedList;
@@ -64,6 +65,9 @@ public abstract class Player {
     }
 
     public void callAndRaise(Turn turn, int money) {
+        if(money <= 0){
+            throw new TooSmallBetExpcetion();
+        }
         bet(turn, turn.getMaxStake() + money - turnBet);
     }
 

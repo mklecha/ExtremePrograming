@@ -67,8 +67,8 @@ public class GameTest extends TestCase {
 
     public void testGetCommonCards() {
         Game g = new Game();
-        g.addCommonCard(3);
+        g.addCommonCard(5);
 
-        assertEquals(3, g.getCommonCards().size());
+        assertEquals(5, g.getCommonCards().size());
     }
 }
